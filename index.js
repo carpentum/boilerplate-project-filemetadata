@@ -10,11 +10,11 @@ app.use(cors());
 app.use("/public", express.static(process.cwd() + "/public"));
 
 app.get("/", function (req, res) {
-  res.sendFile(process.cwd() + "/views/index.html");
+  res.status(200).sendFile(process.cwd() + "/views/index.html");
 });
 
 app.post("/api/fileanalyse", upload.single("upfile"), (req, res) => {
-  res.json({
+  res.status(200).json({
     name: req.file.originalname,
     type: req.file.mimetype,
     size: req.file.size,
